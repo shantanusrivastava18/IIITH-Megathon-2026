@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#0A192F"/></marker>
+  </defs>
+  <rect width="1000" height="560" fill="#F8FAFC"/>
+  <text x="40" y="44" font-size="22" font-weight="700" fill="#0A192F">Green Finance Assistant: architecture</text>
+  <text x="40" y="68" font-size="13" fill="#475569">Scorer ranks · Carbon engine calculates · LLM explains · Rules decide eligibility</text>
+
+  <!-- frontend -->
+  <rect x="40" y="96" width="920" height="70" rx="14" fill="#0A192F"/>
+  <text x="62" y="124" font-size="15" font-weight="700" fill="#fff">React frontend (port 3000)</text>
+  <text x="62" y="148" font-size="12" fill="#94A3B8">Landing · Console · Customers · Companion chat · Carbon Engine · Evaluation · Verify · CSV Upload · Methodology</text>
+  <line x1="500" y1="166" x2="500" y2="200" stroke="#0A192F" stroke-width="2" marker-end="url(#a)"/>
+  <text x="510" y="188" font-size="11" fill="#475569">REST + SSE  /api/*</text>
+
+  <!-- backend -->
+  <rect x="40" y="204" width="920" height="250" rx="14" fill="#fff" stroke="#CBD5E1"/>
+  <text x="62" y="230" font-size="15" font-weight="700" fill="#0A192F">FastAPI backend (port 8001) · server.py</text>
+
+  <g font-size="12">
+    <rect x="62" y="248" width="200" height="86" rx="10" fill="#ECFDF5" stroke="#10B981"/>
+    <text x="76" y="272" font-weight="700" fill="#008A4B">data_gen.py / ingest.py</text>
+    <text x="76" y="292" fill="#334155">Seeded synthetic data (seed 42)</text>
+    <text x="76" y="310" fill="#334155">120 customers · CSV sandbox</text>
+
+    <rect x="282" y="248" width="200" height="86" rx="10" fill="#ECFDF5" stroke="#10B981"/>
+    <text x="296" y="272" font-weight="700" fill="#008A4B">propensity.py</text>
+    <text x="296" y="292" fill="#334155">Transparent scorer + reason</text>
+    <text x="296" y="310" fill="#334155">codes · eligibility rules</text>
+
+    <rect x="502" y="248" width="200" height="86" rx="10" fill="#ECFDF5" stroke="#10B981"/>
+    <text x="516" y="272" font-weight="700" fill="#008A4B">carbon.py</text>
+    <text x="516" y="292" fill="#334155">CEA / IPCC / DEFRA factors</text>
+    <text x="516" y="310" fill="#334155">deterministic formulas</text>
+
+    <rect x="722" y="248" width="216" height="86" rx="10" fill="#ECFDF5" stroke="#10B981"/>
+    <text x="736" y="272" font-weight="700" fill="#008A4B">llm.py</text>
+    <text x="736" y="292" fill="#334155">Narrates stored outputs only</text>
+    <text x="736" y="310" fill="#334155">template fallback (no key)</text>
+
+    <rect x="62" y="352" width="310" height="80" rx="10" fill="#F1F5F9" stroke="#94A3B8"/>
+    <text x="76" y="376" font-weight="700" fill="#0A192F">evaluation.py + learned.py</text>
+    <text x="76" y="396" fill="#334155">Hold-out + 5-fold CV · logistic regression</text>
+    <text x="76" y="414" fill="#334155">benchmark · bootstrap CIs · guardrail checks</text>
+
+    <rect x="392" y="352" width="250" height="80" rx="10" fill="#F1F5F9" stroke="#94A3B8"/>
+    <text x="406" y="376" font-weight="700" fill="#0A192F">memory.py</text>
+    <text x="406" y="396" fill="#334155">Feedback re-orders cards only;</text>
+    <text x="406" y="414" fill="#334155">never changes scores or impact</text>
+
+    <rect x="662" y="352" width="276" height="80" rx="10" fill="#F1F5F9" stroke="#94A3B8"/>
+    <text x="676" y="376" font-weight="700" fill="#0A192F">/verify endpoints</text>
+    <text x="676" y="396" fill="#334155">Recompute stored impact from raw</text>
+    <text x="676" y="414" fill="#334155">customer inputs via public engine</text>
+  </g>
+  <line x1="262" y1="291" x2="280" y2="291" stroke="#0A192F" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="482" y1="291" x2="500" y2="291" stroke="#0A192F" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="702" y1="291" x2="720" y2="291" stroke="#0A192F" stroke-width="2" marker-end="url(#a)"/>
+
+  <line x1="300" y1="454" x2="300" y2="488" stroke="#0A192F" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="160" y="492" width="280" height="48" rx="10" fill="#0A192F"/>
+  <text x="180" y="521" font-size="13" font-weight="700" fill="#fff">MongoDB · customers, transactions,</text>
+  <text x="180" y="535" font-size="10" fill="#94A3B8">opportunities, memory, chat, sandbox_*</text>
+
+  <line x1="830" y1="454" x2="830" y2="488" stroke="#0A192F" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#a)"/>
+  <rect x="660" y="492" width="300" height="48" rx="10" fill="#fff" stroke="#10B981" stroke-dasharray="5 4"/>
+  <text x="680" y="514" font-size="13" font-weight="700" fill="#008A4B">Optional LLM (OpenAI-compatible API)</text>
+  <text x="680" y="530" font-size="10" fill="#475569">only if LLM_API_KEY is set</text>
+</svg>
