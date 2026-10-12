@@ -1,1 +1,0 @@
-# IIITH-Megathon-2026
