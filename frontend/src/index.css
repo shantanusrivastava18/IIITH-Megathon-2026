@@ -1,0 +1,220 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 210 40% 98%;
+        --foreground: 222 47% 11%;
+        --card: 0 0% 100%;
+        --card-foreground: 222 47% 11%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 222 47% 11%;
+        --primary: 152 100% 27%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 210 40% 96.1%;
+        --secondary-foreground: 222 47% 11%;
+        --muted: 210 40% 96.1%;
+        --muted-foreground: 215 16% 47%;
+        --accent: 160 84% 39%;
+        --accent-foreground: 0 0% 100%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 214 32% 91%;
+        --input: 214 32% 91%;
+        --ring: 160 84% 39%;
+        --radius: 0.75rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+        font-family: "Outfit", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    h1, h2, h3, h4 {
+        font-family: "Plus Jakarta Sans", sans-serif;
+    }
+    code, .font-mono {
+        font-family: "JetBrains Mono", monospace;
+    }
+}
+
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+@keyframes marquee-x {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+.animate-marquee {
+    animation: marquee-x 46s linear infinite;
+}
+.animate-marquee:hover { animation-play-state: paused; }
+
+.grain-navy {
+    background-color: #0A192F;
+    background-image: radial-gradient(circle at 20% 0%, rgba(16, 185, 129, 0.14) 0%, transparent 55%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+.hero-radial {
+    background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.10) 0%, rgba(248, 250, 252, 0) 70%);
+}
+
+.text-outline {
+    -webkit-text-stroke: 1.5px rgba(10, 25, 47, 0.22);
+    color: transparent;
+}
+
+::selection { background: #10B981; color: #0A192F; }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #F1F5F9; }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #10B981; }
+
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+    [data-debug-wrapper="true"] > * {
+        margin-left: inherit; margin-right: inherit; margin-top: inherit; margin-bottom: inherit;
+        padding-left: inherit; padding-right: inherit; padding-top: inherit; padding-bottom: inherit;
+        column-gap: inherit; row-gap: inherit; gap: inherit;
+        border-left-width: inherit; border-right-width: inherit; border-top-width: inherit; border-bottom-width: inherit;
+        border-left-style: inherit; border-right-style: inherit; border-top-style: inherit; border-bottom-style: inherit;
+        border-left-color: inherit; border-right-color: inherit; border-top-color: inherit; border-bottom-color: inherit;
+    }
+}
+
+/* --- polish: motion & interaction --- */
+.card-lift {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.3s ease;
+}
+.card-lift:hover {
+    transform: translateY(-4px);
+    border-color: rgba(16, 185, 129, 0.45);
+    box-shadow: 0 18px 40px -18px rgba(10, 25, 47, 0.25);
+}
+main .rounded-2xl.border.bg-white:not(.card-lift) {
+    transition: box-shadow 0.35s ease, border-color 0.35s ease;
+}
+main .rounded-2xl.border.bg-white:not(.card-lift):hover {
+    border-color: rgba(16, 185, 129, 0.35);
+    box-shadow: 0 12px 32px -20px rgba(10, 25, 47, 0.22);
+}
+
+@keyframes shimmer {
+    0% { background-position: -400px 0; }
+    100% { background-position: 400px 0; }
+}
+.skeleton {
+    background: linear-gradient(90deg, #EEF2F6 0%, #E2F5EC 40%, #EEF2F6 80%);
+    background-size: 800px 100%;
+    animation: shimmer 1.4s linear infinite;
+}
+
+:focus-visible {
+    outline: 2px solid #10B981;
+    outline-offset: 2px;
+    border-radius: 6px;
+}
+
+tbody tr { transition: background-color 0.2s ease; }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* --- platform site theme (forest + cream + lime) --- */
+.site-theme { font-family: "Manrope", sans-serif; color: #12301F; }
+.site-theme h1, .site-theme h2, .site-theme h3 { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; }
+.site-theme ::selection { background: #C8F169; color: #0B1F14; }
+
+.glass-cream {
+    background: rgba(245, 240, 230, 0.72);
+    backdrop-filter: blur(18px) saturate(1.4);
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
+}
+.glass-dark {
+    background: rgba(11, 31, 20, 0.55);
+    border: 1px solid rgba(245, 240, 230, 0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+.grain-forest {
+    background-color: #12301F;
+    background-image: radial-gradient(circle at 85% 0%, rgba(200, 241, 105, 0.12) 0%, transparent 50%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+}
+.hero-blob { background: radial-gradient(circle, rgba(200, 241, 105, 0.45) 0%, rgba(245, 240, 230, 0) 65%); }
+.lime-mark {
+    background-image: linear-gradient(transparent 62%, #C8F169 62%, #C8F169 92%, transparent 92%);
+    padding: 0 0.08em;
+}
+
+.io-reveal { opacity: 0; transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); will-change: opacity, transform; }
+.io-up { transform: translateY(28px); }
+.io-scale { transform: scale(0.95); }
+.io-fade { transform: none; }
+.io-reveal.is-visible { opacity: 1; transform: none; }
+
+@keyframes caption-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.animate-caption { animation: caption-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-float-slow { animation: float 8s ease-in-out infinite 1s; }
+
+/* --- console theme: forest + cream + lime (overrides legacy utility colours) --- */
+.console-theme { background: #F5F0E6; font-family: "Manrope", sans-serif; color: #12301F; }
+.console-theme h1, .console-theme h2, .console-theme h3 { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; letter-spacing: -0.01em; }
+.console-theme h1 { font-size: 2.6rem; line-height: 1.05; }
+.console-theme h2 { font-size: 1.45rem; }
+.console-theme h3 { font-size: 1.25rem; }
+.console-theme ::selection { background: #C8F169; color: #0B1F14; }
+.console-theme .grain-navy { background-color: #12301F; background-image: radial-gradient(circle at 85% 0%, rgba(200, 241, 105, 0.12) 0%, transparent 50%); }
+.console-theme .bg-white { background-color: #FBF8F1; }
+.console-theme .bg-slate-50, .console-theme .bg-slate-50\/60 { background-color: #F1EADC; }
+.console-theme .bg-slate-100 { background-color: #EAE2D2; }
+.console-theme .border-slate-200, .console-theme .border-slate-200\/80, .console-theme .border-slate-100 { border-color: rgba(18, 48, 31, 0.1); }
+.console-theme .divide-slate-50 > * + *, .console-theme .divide-slate-100 > * + * { border-color: rgba(18, 48, 31, 0.07); }
+.console-theme .text-navy { color: #12301F; }
+.console-theme .text-slate-700, .console-theme .text-slate-600 { color: rgba(18, 48, 31, 0.78); }
+.console-theme main .text-slate-500, .console-theme main .text-slate-400 { color: rgba(18, 48, 31, 0.55); }
+.console-theme .text-lloyds { color: #4F7A3A; }
+.console-theme .bg-lloyds { background-color: #12301F; color: #F5F0E6; }
+.console-theme .hover\:bg-lloyds:hover { background-color: #1F4A33; }
+.console-theme .bg-navy { background-color: #12301F; }
+.console-theme .hover\:bg-mint:hover { background-color: #C8F169; color: #12301F; }
+.console-theme .bg-mint { background-color: #C8F169; }
+.console-theme .text-mint { color: #C8F169; }
+.console-theme main .text-mint { color: #4F7A3A; }
+.console-theme .bg-mint\/15 { background-color: rgba(200, 241, 105, 0.15); }
+.console-theme .bg-mint-light, .console-theme .bg-mint-light\/60 { background-color: #EEF5D6; }
+.console-theme .hover\:bg-mint-light\/40:hover { background-color: rgba(200, 241, 105, 0.18); }
+.console-theme .border-mint-border { border-color: #DCEFA8; }
+.console-theme .ring-mint\/20 { --tw-ring-color: rgba(200, 241, 105, 0.25); }
+.console-theme .focus\:ring-mint:focus { --tw-ring-color: #A6D63F; }
+.console-theme .rounded-2xl { border-radius: 1.5rem; }
+.console-theme .skeleton { background: linear-gradient(90deg, #EAE2D2 0%, #EEF5D6 40%, #EAE2D2 80%); background-size: 800px 100%; }
+.console-theme main .rounded-2xl.border.bg-white:not(.card-lift):hover { border-color: rgba(79, 122, 58, 0.35); }
+.console-theme .card-lift:hover { border-color: rgba(79, 122, 58, 0.45); }
+.console-theme .from-lloyds { --tw-gradient-from: #4F7A3A; --tw-gradient-to: rgba(79,122,58,0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+.console-theme .to-mint { --tw-gradient-to: #C8F169; }
+.console-theme .font-mono.text-2xl, .console-theme .font-mono.text-3xl { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: 2.4rem; }
+.console-theme main .grain-navy .text-slate-400, .console-theme main .grain-navy .text-slate-500 { color: rgba(245, 240, 230, 0.62); }
+.console-theme main .grain-navy .text-slate-300, .console-theme main .grain-navy .text-slate-600 { color: rgba(245, 240, 230, 0.8); }
+.console-theme main .grain-navy .text-mint { color: #C8F169; }
+.console-theme main .grain-navy .bg-white { background-color: rgba(245, 240, 230, 0.08); }
